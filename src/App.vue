@@ -1,16 +1,19 @@
 <template>
   <div class="app">
     <Header />
+    <ListContainer />
   </div>
 </template>
 
 <script>
 import Header from 'components/Header';
+import ListContainer from 'containers/ListContainer';
 
 export default {
   name: 'app',
   components: {
-    Header
+    Header,
+    ListContainer
   }
 }
 </script>
@@ -24,22 +27,13 @@ export default {
 
 :root {
   --primary: #FF6601;
+  --white: #FFFFFF;
   --grey: #F2F3F5;
 }
 
 body {
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
   font-size: 15px;
   background-color: var(--grey);
-  height: 100vh;
-  width: 100vw;
-}
-
-.app {
-  height: 100%;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
 }
 </style>

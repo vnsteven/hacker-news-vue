@@ -7,12 +7,15 @@
 <script>
 export default {
   name: 'Header'
-}
+};
 </script>
 
 <style lang="scss">
 .header {
-  flex: 0.085;
+  position: fixed;
+  width: 100%;
+  height: 3.5rem;
+  top: 0;
   background-color: var(--primary);
 }
 </style>
