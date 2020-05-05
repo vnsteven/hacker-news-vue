@@ -1,30 +1,36 @@
 <template>
   <div class="list-item">
-    <div class="list-item--left">
-      <span>223</span>
+    <div class="left">
+      <span>{{story.score}}</span>
     </div>
-    <div class="list-item--right">
-      <p>Title</p>
+    <div class="right">
+      <p class="title">{{story.title}}</p>
+      <p class="subtitle">
+        by <span>{{story.by}}</span>
+        {{story.time | moment("from", "now", true)}} ago |
+        <span>{{story.kids ? story.kids.length : 0}} comments</span>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ListItem"
+  name: "ListItem",
+  props: ["story"]
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .list-item {
   display: flex;
-  width: 50rem;
+  width: 45rem;
   height: 5rem;
   border-bottom: 1px solid var(--grey);
   background-color: var(--white);
   box-sizing: border-box;
 
-  &--left {
+  .left {
     flex: 0.2;
     display: flex;
     justify-content: center;
@@ -34,11 +40,20 @@ export default {
     font-size: 1.2rem;
   }
 
-  &--right {
+  .right {
     flex: 1;
     display: flex;
-    align-items: center;
-    padding-left: 1rem;
+    flex-direction: column;
+    justify-content: center;
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: var(--dark-grey);
+
+      span {
+        text-decoration: underline;
+      }
+    }
   }
 }
 </style>

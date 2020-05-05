@@ -5,16 +5,24 @@
   "main": "app.js",
   "author": "Steven Nguyen",
   "license": "MIT",
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "webpack --config ./webpack.config.js --mode production"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "vue": "^2.6.11",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.3.0",
