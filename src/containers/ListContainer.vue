@@ -8,7 +8,9 @@
 
 <script>
 import ListItem from 'components/ListItem';
-import { fetchData } from 'utils';
+import Api from 'api';
+
+const api = new Api();
 
 export default {
   name: 'ListContainer',
@@ -24,7 +26,7 @@ export default {
   },
 
   async mounted() {
-    const data = await fetchData();
+    const data = await api.fetchData();
     this.stories = data;
   }
 };
