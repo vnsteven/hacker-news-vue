@@ -1,19 +1,17 @@
 <template>
   <div class="app">
     <Header />
-    <ListContainer />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Header from 'components/Header';
-import ListContainer from 'containers/ListContainer';
 
 export default {
   name: 'app',
   components: {
-    Header,
-    ListContainer
+    Header
   }
 }
 </script>
@@ -39,5 +37,10 @@ body {
   color: var(--black);
   line-height: 1.6;
   background-color: var(--grey);
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
 }
 </style>
