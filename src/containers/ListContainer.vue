@@ -25,9 +25,21 @@ export default {
     }
   },
 
-  async mounted() {
-    const data = await api.fetchData();
-    this.stories = data;
+  mounted() {
+    this.fetchData();
+  },
+
+  methods: {
+    async fetchData() {
+      const data = await api.fetchData(window.location.pathname);
+      this.stories = data;
+    }
+  },
+
+  watch: {
+    $route(to) {
+      this.fetchData();
+    }
   }
 };
 </script>

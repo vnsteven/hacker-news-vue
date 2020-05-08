@@ -30,6 +30,10 @@ export default {
   background-color: var(--white);
   box-sizing: border-box;
 
+  @media screen and (max-width: 740px) {
+    width: 30rem;
+  }
+
   .left {
     flex: 0.2;
     display: flex;
