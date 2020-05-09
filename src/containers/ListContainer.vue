@@ -9,15 +9,16 @@
       :allowPrev="allowPrev"
       :allowNext="allowNext"
     />
-    <div :key="story.id" v-for="story in stories">
-      <ListItem :story="story"/>
-    </div>
+    <Loader :loading="loading">
+      <div :key="story.id" v-for="story in stories">
+        <ListItem :story="story"/>
+      </div>
+    </Loader>
   </div>
 </template>
 
 <script>
-import PulseLoader from 'vue-spinner/src/PulseLoader';
-import { ListItem, Pagination } from 'components';
+import { ListItem, Pagination, Loader } from 'components';
 import Api from 'api';
 
 const api = new Api();
@@ -28,7 +29,7 @@ export default {
   components: {
     ListItem,
     Pagination,
-    PulseLoader
+    Loader
   },
 
   data() {
@@ -43,11 +44,15 @@ export default {
       length: 0
     };
 
+    const utils = {
+      path: this.$route.path,
+      loading: true
+    };
+
     return {
       ...pagination,
       ...stories,
-      path: this.$route.path,
-      loading: false
+      ...utils
     };
   },
 
@@ -57,12 +62,14 @@ export default {
 
   methods: {
     async fetchData() {
+      this.loading = true;
       const data = await api.fetchData(this.path, parseInt(this.page));
 
       this.stories = data;
       this.length = api.dataLength;
       this.handleNextVisibility();
       this.handlePrevVisibility();
+      this.loading = false;
     },
 
     handleNextVisibility() {
@@ -112,5 +119,6 @@ export default {
   padding-top: 7.5rem;
   padding-bottom: 1rem;
   min-height: 10rem;
+  width: 100%;
 }
 </style>

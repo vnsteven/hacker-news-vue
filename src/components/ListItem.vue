@@ -33,7 +33,7 @@ export default {
   box-sizing: border-box;
 
   @media screen and (max-width: 740px) {
-    width: 30rem;
+    width: 100%;
   }
 
   .left {
