@@ -4,10 +4,12 @@
       <span>{{story.score}}</span>
     </div>
     <div class="right">
-      <p class="title">{{story.title}}</p>
+      <a :href="story.url" target="_blank" class="title">
+        {{story.title}}
+      </a>
       <p class="subtitle">
         by <span>{{story.by}}</span>
-        {{story.time | moment("from", "now", true)}} ago |
+        {{ story.time | moment("from", "now") }} ago |
         <span>{{story.kids ? story.kids.length : 0}} comments</span>
       </p>
     </div>

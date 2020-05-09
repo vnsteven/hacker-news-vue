@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from 'components/Header';
+import { Header } from 'components';
 
 export default {
   name: 'app',
@@ -29,6 +29,7 @@ export default {
   --grey: #F2F3F5;
   --dark-grey: #6d6875;
   --black: #34495E;
+  --brown: #EABE7C;
 }
 
 body {

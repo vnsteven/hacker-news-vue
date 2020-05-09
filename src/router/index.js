@@ -10,6 +10,6 @@ export default new VueRouter({
     { path: '/top', component: ListContainer },
     { path: '/new', component: ListContainer },
     { path: '/best', component: ListContainer },
-    { path: '/', redirect: '/top' }
+    { path: '/', redirect: '/top' }
   ]
 });

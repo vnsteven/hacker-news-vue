@@ -1,13 +1,22 @@
 <template>
   <div class="header">
     <div class="navigation">
-      <router-link to="/top">
+      <router-link
+        :to="{ path: 'top', query: { page: 1 } }"
+        :class="handleDisable('top')"
+      >
         Top
       </router-link>
-      <router-link to="/new">
+      <router-link
+        :to="{ path: 'new', query: { page: 1 } }"
+        :class="handleDisable('new')"
+      >
         New
       </router-link>
-      <router-link to="/best">
+      <router-link
+        :to="{ path: 'best', query: { page: 1 } }"
+        :class="handleDisable('top')"
+      >
         Best
       </router-link>
     </div>
@@ -16,11 +25,18 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  methods: {
+    handleDisable(path) {
+      if (this.$route.path === `/${path}`) {
+        return 'disabled';
+      }
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   position: fixed;
   width: 100%;
@@ -31,15 +47,30 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.navigation {
-  width: 45rem;
+  .navigation {
+    width: 45rem;
 
-  a {
-    font-size: 1.2rem;
-    color: var(--white);
-    margin-right: 1rem;
+    a {
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-right: 1rem;
+    }
+
+    .router-link-active {
+      pointer-events: none;
+      font-weight: 800;
+
+      &::before {
+        content: "";
+        position: absolute;
+        margin-top: 2.4rem;
+        width: 3rem;
+        margin-left: -4px;
+        height: 5px;
+        background-color: var(--brown);
+      }
+    }
   }
 }
 </style>
