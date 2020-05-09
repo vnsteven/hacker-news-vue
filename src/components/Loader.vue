@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div :class="['loader', loading ? null : 'hidden'].join(' ')">
+    <div v-if="loading">
       <BeatLoader color="var(--primary)" />
     </div>
-    <div :class="loading ? 'hidden' : null">
+    <div v-else>
       <slot />
     </div>
   </div>
