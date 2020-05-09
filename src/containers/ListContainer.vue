@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import ListItem from 'components/ListItem';
-import Pagination from 'components/Pagination';
+import PulseLoader from 'vue-spinner/src/PulseLoader';
+import { ListItem, Pagination } from 'components';
 import Api from 'api';
 
 const api = new Api();
@@ -27,7 +27,8 @@ export default {
 
   components: {
     ListItem,
-    Pagination
+    Pagination,
+    PulseLoader
   },
 
   data() {
@@ -45,7 +46,8 @@ export default {
     return {
       ...pagination,
       ...stories,
-      path: this.$route.path
+      path: this.$route.path,
+      loading: false
     };
   },
 
@@ -55,8 +57,7 @@ export default {
 
   methods: {
     async fetchData() {
-      const page = this.$route.query.page || 1;
-      const data = await api.fetchData(this.path, parseInt(page));
+      const data = await api.fetchData(this.path, parseInt(this.page));
 
       this.stories = data;
       this.length = api.dataLength;

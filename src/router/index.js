@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import ListContainer from '../containers/ListContainer';
+import ListContainer from 'containers/ListContainer';
 
 Vue.use(VueRouter);
 

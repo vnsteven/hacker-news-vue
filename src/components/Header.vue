@@ -1,38 +1,21 @@
 <template>
   <div class="header">
     <div class="navigation">
-      <router-link
-        :to="{ path: 'top', query: { page: 1 } }"
-        :class="handleDisable('top')"
-      >
-        Top
-      </router-link>
-      <router-link
-        :to="{ path: 'new', query: { page: 1 } }"
-        :class="handleDisable('new')"
-      >
-        New
-      </router-link>
-      <router-link
-        :to="{ path: 'best', query: { page: 1 } }"
-        :class="handleDisable('top')"
-      >
-        Best
-      </router-link>
+      <NavLink label="top" />
+      <NavLink label="new" />
+      <NavLink label="best" />
     </div>
   </div>
 </template>
 
 <script>
+import NavLink from './NavLink';
+
 export default {
   name: 'Header',
-  methods: {
-    handleDisable(path) {
-      if (this.$route.path === `/${path}`) {
-        return 'disabled';
-      }
-    }
-  }
+  components: {
+    NavLink
+  },
 };
 </script>
 
@@ -49,28 +32,9 @@ export default {
   align-items: center;
 
   .navigation {
+    display: flex;
     width: 45rem;
-
-    a {
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-right: 1rem;
-    }
-
-    .router-link-active {
-      pointer-events: none;
-      font-weight: 800;
-
-      &::before {
-        content: "";
-        position: absolute;
-        margin-top: 2.4rem;
-        width: 3rem;
-        margin-left: -4px;
-        height: 5px;
-        background-color: var(--brown);
-      }
-    }
+    height: 100%;
   }
 }
 </style>

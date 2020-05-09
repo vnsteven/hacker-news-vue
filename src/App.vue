@@ -35,6 +35,7 @@ export default {
 body {
   font-family: 'Lato', sans-serif;
   font-size: 15px;
+  letter-spacing: 0.02em;
   color: var(--black);
   line-height: 1.6;
   background-color: var(--grey);
