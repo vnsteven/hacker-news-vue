@@ -27,8 +27,4 @@ export default {
   margin-top: 10rem;
   width: 100%;
 }
-
-.hidden {
-  display: none;
-}
 </style>
