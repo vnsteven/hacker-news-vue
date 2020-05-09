@@ -74,7 +74,7 @@ export default {
 
     handleNextVisibility() {
       this.allowNext = true;
-      if (this.page === api.dataLength / 10) {
+      if (this.page === this.length / 10) {
         this.allowNext = false;
       }
     },

@@ -45,4 +45,14 @@ a {
   text-decoration: none;
   color: var(--black);
 }
+
+input {
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+
+  &:focus {
+    outline: none;
+    border: 2px solid var(--brown);
+  }
+}
 </style>

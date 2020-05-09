@@ -1,20 +1,27 @@
 <template>
   <div class="header">
-    <div class="navigation">
-      <NavLink label="top" />
-      <NavLink label="new" />
-      <NavLink label="best" />
+    <div class="nav-bar">
+      <div class="navigation">
+        <NavLink label="top" />
+        <NavLink label="new" />
+        <NavLink label="best" />
+      </div>
+      <div class="search-bar">
+        <SearchBar />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import NavLink from './NavLink';
+import SearchBar from './SearchBar';
 
 export default {
   name: 'Header',
   components: {
-    NavLink
+    NavLink,
+    SearchBar
   },
 };
 </script>
@@ -31,10 +38,20 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .navigation {
+  .nav-bar {
     display: flex;
     width: 45rem;
-    height: 100%;
+    height: inherit;
+
+    .navigation {
+      display: flex;
+      flex: 0.5;
+      height: inherit;
+    }
+
+    .search-bar {
+      flex: 0.5;
+    }
   }
 }
 </style>

@@ -22,8 +22,8 @@
 export default {
   name: "Pagination",
   props: [
-    "length", "page", "path", "prev", "next",
-    "allowNext", "allowPrev"
+    'length', 'page', 'path', 'prev', 'next',
+    'allowNext', 'allowPrev'
   ]
 };
 </script>
