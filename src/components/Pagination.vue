@@ -7,7 +7,7 @@
       >
         <p @click="prev">< prev</p>
       </router-link>
-      <p>{{page}}/{{length / 10}}</p>
+      <p>{{page}}/{{pagesTotal}}</p>
       <router-link
         :to="{ path, query: { page }}"
         :class="!allowNext ? 'disabled' : null"
@@ -23,7 +23,7 @@ export default {
   name: "Pagination",
   props: [
     'length', 'page', 'path', 'prev', 'next',
-    'allowNext', 'allowPrev'
+    'allowNext', 'allowPrev', 'pagesTotal'
   ]
 };
 </script>

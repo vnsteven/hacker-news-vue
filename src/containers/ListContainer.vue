@@ -4,6 +4,7 @@
       :length="length"
       :page="page"
       :path="path"
+      :pagesTotal="pagesTotal"
       :prev="prev"
       :next="next"
       :allowPrev="allowPrev"
@@ -35,6 +36,7 @@ export default {
   data() {
     const pagination = {
       page: parseInt(this.$route.query.page) || 1,
+      pagesTotal: 0,
       allowNext: false,
       allowPrev: false
     };
@@ -67,6 +69,7 @@ export default {
 
       this.stories = data;
       this.length = api.dataLength;
+      this.pagesTotal = Math.floor(api.dataLength / 10);
       this.handleNextVisibility();
       this.handlePrevVisibility();
       this.loading = false;
@@ -74,7 +77,7 @@ export default {
 
     handleNextVisibility() {
       this.allowNext = true;
-      if (this.page === this.length / 10) {
+      if (this.page === this.pagesTotal) {
         this.allowNext = false;
       }
     },
@@ -93,7 +96,7 @@ export default {
     },
 
     next() {
-      if (this.page < api.dataLength / 10) {
+      if (this.page < this.pagesTotal) {
         this.page += 1;
       }
     }
