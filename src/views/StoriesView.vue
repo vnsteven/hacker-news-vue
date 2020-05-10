@@ -1,16 +1,15 @@
 <template>
   <div class="list-view">
     <Pagination
-      :length="length"
       :page="page"
       :path="path"
-      :pages-total="pagesTotal"
+      :page-count="pageCount"
       :prev="prev"
       :next="next"
       :allow-prev="allowPrev"
       :allow-next="allowNext"
     />
-    <Loader :loading="loading">
+    <Loader :loading="isLoading">
       <div
         v-for="story in stories"
         :key="story.id"
@@ -22,11 +21,9 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import { Loader } from 'components/UI';
 import { StoryItem, Pagination } from 'components/stories';
-import Api from 'api';
-
-const api = new Api();
 
 export default {
   name: 'Stories',
@@ -38,27 +35,11 @@ export default {
   },
 
   data() {
-    const pagination = {
-      page: parseInt(this.$route.query.page, 10) || 1,
-      pagesTotal: 0,
-      allowNext: false,
-      allowPrev: false
-    };
-
-    const stories = {
-      stories: [],
-      length: 0
-    };
-
-    const utils = {
-      path: this.$route.path,
-      loading: true
-    };
-
     return {
-      ...pagination,
-      ...stories,
-      ...utils
+      page: parseInt(this.$route.query.page, 10) || 1,
+      allowNext: false,
+      allowPrev: false,
+      path: this.$route.path
     };
   },
 
@@ -68,7 +49,7 @@ export default {
         this.page = 1;
       }
       this.path = to.path;
-      this.fetchData(this.path, this.page);
+      this.fetchData();
     }
   },
 
@@ -76,22 +57,23 @@ export default {
     this.fetchData();
   },
 
-  methods: {
-    async fetchData() {
-      this.loading = true;
-      const data = await api.fetchData(this.path, parseInt(this.page, 10));
+  computed: {
+    ...mapState(['stories', 'isLoading']),
+    ...mapGetters({ pageCount: 'getPageCount' })
+  },
 
-      this.stories = data;
-      this.length = api.dataLength;
-      this.pagesTotal = Math.floor(api.dataLength / 10);
+  methods: {
+    fetchData() {
+      const data = { path: this.path, page: parseInt(this.page, 10) };
+      this.$store.dispatch('FETCH_DATA', data);
+
       this.handleNextVisibility();
       this.handlePrevVisibility();
-      this.loading = false;
     },
 
     handleNextVisibility() {
       this.allowNext = true;
-      if (this.page === this.pagesTotal) {
+      if (this.page === this.pageCount) {
         this.allowNext = false;
       }
     },
@@ -110,7 +92,7 @@ export default {
     },
 
     next() {
-      if (this.page < this.pagesTotal) {
+      if (this.page < this.pageCount) {
         this.page += 1;
       }
     }

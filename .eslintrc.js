@@ -19,7 +19,9 @@ module.exports = {
       { allow: ['warn', 'error'] }
     ],
     'comma-dangle': ['error', 'never'],
-    quotes: ['error', 'single']
+    quotes: ['error', 'single'],
+    'no-plusplus': 0,
+    'no-param-reassign': 0
   },
   settings: {
     'import/resolver': {

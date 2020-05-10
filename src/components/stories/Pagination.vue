@@ -9,7 +9,7 @@
           &lt; prev
         </p>
       </router-link>
-      <p>{{ page }}/{{ pagesTotal }}</p>
+      <p>{{ page }}/{{ pageCount }}</p>
       <router-link
         :to="handleRouter"
         :class="{ disabled: !allowNext }"
@@ -27,7 +27,7 @@ export default {
   name: 'Pagination',
   props: [
     'length', 'page', 'path', 'prev', 'next',
-    'allowNext', 'allowPrev', 'pagesTotal'
+    'allowNext', 'allowPrev', 'pageCount'
   ],
   computed: {
     handleRouter() {
