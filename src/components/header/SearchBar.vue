@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import SearchIcon from './SearchIcon';
+import { SearchIcon } from 'components/UI';
 
 export default {
   name: "SearchBar",

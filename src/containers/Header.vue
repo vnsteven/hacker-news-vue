@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import NavLink from './NavLink';
-import SearchBar from './SearchBar';
+import { NavLink, SearchBar } from 'components/header';
 
 export default {
   name: 'Header',

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './App.vue';
+import App from './containers/App';
 import router from './router';
 
 Vue.use(require('vue-moment'));

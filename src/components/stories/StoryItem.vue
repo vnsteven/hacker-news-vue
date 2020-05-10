@@ -1,16 +1,16 @@
 <template>
   <div class="list-item">
     <div class="left">
-      <span>{{story.score}}</span>
+      <span>{{ story.score }}</span>
     </div>
     <div class="right">
       <a :href="story.url" target="_blank" class="title">
-        {{story.title}}
+        {{ story.title }}
       </a>
       <p class="subtitle">
-        by <span>{{story.by}}</span>
-        {{ story.time | moment("from", "now") }} ago |
-        <span>{{story.kids ? story.kids.length : 0}} comments</span>
+        by <span>{{ story.by }}</span>
+        {{ convertTimestamp }} ago |
+        <span>{{ commentsNumber }}</span>
       </p>
     </div>
   </div>
@@ -18,8 +18,17 @@
 
 <script>
 export default {
-  name: "ListItem",
-  props: ["story"]
+  name: "StoryItem",
+  props: ["story"],
+  computed: {
+    commentsNumber() {
+      if (this.story.kids) return `${this.story.kids.length} comments`;
+      return '0 comment';
+    },
+    convertTimestamp() {
+      return this.$moment(new Date(this.story.time * 1000)).fromNow();
+    }
+  }
 };
 </script>
 

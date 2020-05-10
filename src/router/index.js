@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import ListContainer from 'containers/ListContainer';
+import Stories from 'containers/Stories';
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/top', component: ListContainer },
-    { path: '/new', component: ListContainer },
-    { path: '/best', component: ListContainer },
+    { path: '/top', component: Stories },
+    { path: '/new', component: Stories },
+    { path: '/best', component: Stories },
     { path: '/', redirect: '/top' }
   ]
 });

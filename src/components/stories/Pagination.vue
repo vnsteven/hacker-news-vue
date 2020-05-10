@@ -2,15 +2,15 @@
   <div class="sub-header">
     <div class="pagination">
       <router-link
-        :to="{ path, query: { page }}"
-        :class="!allowPrev ? 'disabled' : null"
+        :to="handleRouter"
+        :class="{ disabled: !allowPrev }"
       >
         <p @click="prev">< prev</p>
       </router-link>
-      <p>{{page}}/{{pagesTotal}}</p>
+      <p>{{ page }}/{{ pagesTotal }}</p>
       <router-link
-        :to="{ path, query: { page }}"
-        :class="!allowNext ? 'disabled' : null"
+        :to="handleRouter"
+        :class="{ disabled: !allowNext }"
       >
         <p @click="next">next ></p>
       </router-link>
@@ -24,7 +24,15 @@ export default {
   props: [
     'length', 'page', 'path', 'prev', 'next',
     'allowNext', 'allowPrev', 'pagesTotal'
-  ]
+  ],
+  computed: {
+    handleRouter() {
+      return {
+        path: this.path,
+        query: { page: this.page }
+      };
+    }
+  }
 };
 </script>
 

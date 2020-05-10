@@ -1,7 +1,7 @@
 <template>
-  <div :class="['nav-link', handleActive()].join(' ')">
-    <router-link :to="{ path: label, query: { page: 1 } }">
-      {{ label.charAt(0).toUpperCase() + label.slice(1) }}
+  <div :class="['nav-link', isActive]">
+    <router-link :to="handleRouter">
+      {{ capitalizedLabel }}
     </router-link>
   </div>
 </template>
@@ -10,11 +10,17 @@
 export default {
   name: 'NavLink',
   props: ['label'],
-  methods: {
-    handleActive() {
+  computed: {
+    capitalizedLabel() {
+      return this.label.charAt(0).toUpperCase() + this.label.slice(1);
+    },
+    isActive() {
       if (this.$route.path === `/${this.label}`) {
         return 'nav-link-active';
       }
+    },
+    handleRouter() {
+      return { path: this.label, query: { page: 1 } };
     }
   }
 }

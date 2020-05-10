@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'SearchIcon'
-}
+};
 </script>
 
 <style lang="scss" scoped>

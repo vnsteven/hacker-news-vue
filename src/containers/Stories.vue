@@ -12,23 +12,24 @@
     />
     <Loader :loading="loading">
       <div :key="story.id" v-for="story in stories">
-        <ListItem :story="story"/>
+        <StoryItem :story="story"/>
       </div>
     </Loader>
   </div>
 </template>
 
 <script>
-import { ListItem, Pagination, Loader } from 'components';
+import { Loader } from 'components/UI';
+import { StoryItem, Pagination } from 'components/stories';
 import Api from 'api';
 
 const api = new Api();
 
 export default {
-  name: 'ListContainer',
+  name: 'Stories',
 
   components: {
-    ListItem,
+    StoryItem,
     Pagination,
     Loader
   },
