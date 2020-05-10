@@ -1,2 +1,2 @@
-export { default as StoryItem } from './StoryItem';
-export { default as Pagination } from './Pagination';
+export { default as StoryItem } from './StoryItem.vue';
+export { default as Pagination } from './Pagination.vue';

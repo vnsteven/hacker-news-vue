@@ -3,7 +3,10 @@
     <div class="icon">
       <SearchIcon />
     </div>
-    <input :value="value" placeholder="Rechercher"/>
+    <input
+      :value="value"
+      placeholder="Rechercher"
+    >
   </div>
 </template>
 
@@ -11,11 +14,11 @@
 import { SearchIcon } from 'components/UI';
 
 export default {
-  name: "SearchBar",
-  props: ['value'],
+  name: 'SearchBar',
   components: {
     SearchIcon
-  }
+  },
+  props: ['value']
 };
 </script>
 

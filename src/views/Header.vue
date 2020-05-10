@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import { NavLink, SearchBar } from 'components/header';
+import { NavLink, SearchBar } from 'components/header';
 
 export default {
   name: 'Header',
   components: {
     NavLink,
     SearchBar
-  },
+  }
 };
 </script>
 

@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import App from './containers/App';
+import App from './views/App.vue';
 import router from './router';
 
 Vue.use(require('vue-moment'));
 
-new Vue({
+export default new Vue({
   router,
   el: '#root',
-  render: h => h(App)
+  render: (h) => h(App)
 });

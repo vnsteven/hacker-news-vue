@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { handlePagination } from 'utils';
+import handlePagination from '../util';
 
 class Api {
   constructor() {
@@ -8,9 +8,10 @@ class Api {
       timeout: 1000 * 60 * 2
     });
     this.dataLength = 0;
-  };
+  }
 
   getStories = (label) => this.instance.get(`${label}stories.json`);
+
   getStory = (id) => this.instance.get(`/item/${id}.json`);
 
   fetchData = async (label, page) => {
@@ -20,7 +21,7 @@ class Api {
       const { data } = response;
 
       this.dataLength = data.length;
-      const stories = data.slice(from, to).map(async id => {
+      const stories = data.slice(from, to).map(async (id) => {
         const res = await this.getStory(id);
         return res.data;
       });
@@ -28,7 +29,7 @@ class Api {
 
       return result;
     } catch (error) {
-      console.error(error.message);
+      return console.error(error.message);
     }
   };
 }

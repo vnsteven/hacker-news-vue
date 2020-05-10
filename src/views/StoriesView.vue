@@ -1,25 +1,28 @@
 <template>
-  <div class="list-container">
+  <div class="list-view">
     <Pagination
       :length="length"
       :page="page"
       :path="path"
-      :pagesTotal="pagesTotal"
+      :pages-total="pagesTotal"
       :prev="prev"
       :next="next"
-      :allowPrev="allowPrev"
-      :allowNext="allowNext"
+      :allow-prev="allowPrev"
+      :allow-next="allowNext"
     />
     <Loader :loading="loading">
-      <div :key="story.id" v-for="story in stories">
-        <StoryItem :story="story"/>
+      <div
+        v-for="story in stories"
+        :key="story.id"
+      >
+        <StoryItem :story="story" />
       </div>
     </Loader>
   </div>
 </template>
 
 <script>
-import { Loader } from 'components/UI';
+import { Loader } from 'components/UI';
 import { StoryItem, Pagination } from 'components/stories';
 import Api from 'api';
 
@@ -36,7 +39,7 @@ export default {
 
   data() {
     const pagination = {
-      page: parseInt(this.$route.query.page) || 1,
+      page: parseInt(this.$route.query.page, 10) || 1,
       pagesTotal: 0,
       allowNext: false,
       allowPrev: false
@@ -59,6 +62,16 @@ export default {
     };
   },
 
+  watch: {
+    $route(to, from) {
+      if (to.path !== from.path) {
+        this.page = 1;
+      }
+      this.path = to.path;
+      this.fetchData(this.path, this.page);
+    }
+  },
+
   mounted() {
     this.fetchData();
   },
@@ -66,7 +79,7 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true;
-      const data = await api.fetchData(this.path, parseInt(this.page));
+      const data = await api.fetchData(this.path, parseInt(this.page, 10));
 
       this.stories = data;
       this.length = api.dataLength;
@@ -101,22 +114,12 @@ export default {
         this.page += 1;
       }
     }
-  },
-
-  watch: {
-    $route(to, from) {
-      if (to.path !== from.path) {
-        this.page = 1;
-      }
-      this.path = to.path;
-      this.fetchData(this.path, this.page);
-    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.list-container {
+.list-view {
   display: flex;
   flex-direction: column;
   align-items: center;

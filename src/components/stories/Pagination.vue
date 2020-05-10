@@ -5,14 +5,18 @@
         :to="handleRouter"
         :class="{ disabled: !allowPrev }"
       >
-        <p @click="prev">< prev</p>
+        <p @click="prev">
+          &lt; prev
+        </p>
       </router-link>
       <p>{{ page }}/{{ pagesTotal }}</p>
       <router-link
         :to="handleRouter"
-        :class="{ disabled: !allowNext }"
+        :class="{ disabled: !allowNext }"
       >
-        <p @click="next">next ></p>
+        <p @click="next">
+          next &gt;
+        </p>
       </router-link>
     </div>
   </div>
@@ -20,7 +24,7 @@
 
 <script>
 export default {
-  name: "Pagination",
+  name: 'Pagination',
   props: [
     'length', 'page', 'path', 'prev', 'next',
     'allowNext', 'allowPrev', 'pagesTotal'

@@ -1,3 +1,2 @@
-export { default as SearchBar } from './SearchBar';
-export { default as NavLink } from './NavLink';
-
+export { default as SearchBar } from './SearchBar.vue';
+export { default as NavLink } from './NavLink.vue';

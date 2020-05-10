@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Stories from 'containers/Stories';
+import Stories from 'views/StoriesView';
 
 Vue.use(VueRouter);
 
@@ -10,6 +10,6 @@ export default new VueRouter({
     { path: '/top', component: Stories },
     { path: '/new', component: Stories },
     { path: '/best', component: Stories },
-    { path: '/', redirect: '/top' }
+    { path: '/', redirect: '/top' }
   ]
 });

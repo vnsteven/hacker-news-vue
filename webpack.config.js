@@ -5,7 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
@@ -19,7 +19,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       },
       {
         test: /\.s?css$/,

@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Header from './Header';
+import Header from './Header.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Header
   }
-}
+};
 </script>
 
 <style lang="scss">

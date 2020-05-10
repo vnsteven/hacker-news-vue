@@ -15,15 +15,14 @@ export default {
       return this.label.charAt(0).toUpperCase() + this.label.slice(1);
     },
     isActive() {
-      if (this.$route.path === `/${this.label}`) {
-        return 'nav-link-active';
-      }
+      if (this.$route.path !== `/${this.label}`) return null;
+      return 'nav-link-active';
     },
     handleRouter() {
       return { path: this.label, query: { page: 1 } };
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

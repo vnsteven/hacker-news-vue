@@ -4,7 +4,11 @@
       <span>{{ story.score }}</span>
     </div>
     <div class="right">
-      <a :href="story.url" target="_blank" class="title">
+      <a
+        :href="story.url"
+        target="_blank"
+        class="title"
+      >
         {{ story.title }}
       </a>
       <p class="subtitle">
@@ -18,8 +22,8 @@
 
 <script>
 export default {
-  name: "StoryItem",
-  props: ["story"],
+  name: 'StoryItem',
+  props: ['story'],
   computed: {
     commentsNumber() {
       if (this.story.kids) return `${this.story.kids.length} comments`;

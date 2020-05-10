@@ -2,17 +2,14 @@
   "name": "hacker-news-vue",
   "version": "1.0.0",
   "description": "hacker news clone with vuejs",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Steven Nguyen",
   "license": "MIT",
-  "babel": {
-    "plugins": [
-      "@babel/plugin-proposal-class-properties"
-    ]
-  },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "build": "webpack --config ./webpack.config.js --mode production"
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "lint": "eslint --ext .js,.vue ./",
+    "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -24,8 +21,16 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
     "html-webpack-plugin": "^4.3.0",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
