@@ -7,15 +7,28 @@ export default {
     state.dataLength = length;
   },
 
-  SET_LOADING: (state) => {
-    state.isLoading = true;
+  SET_CURRENT_LOADING: (state) => {
+    state.isCurrentLoading = true;
   },
 
-  RESET_LOADING: (state) => {
-    state.isLoading = false;
+  RESET_CURRENT_LOADING: (state) => {
+    state.isCurrentLoading = false;
+  },
+
+  SET_ALL_LOADING: (state) => {
+    state.isAllLoading = true;
+  },
+
+  RESET_ALL_LOADING: (state) => {
+    state.isAllLoading = false;
   },
 
   UPDATE_ALL: (state, { data, label }) => {
     state.allStories[label] = data;
+  },
+
+  UPDATE_SEARCH_VALUE: (state, { value }) => {
+    state.searchValue = value;
+    state.isEmpty = !state.searchValue.length;
   }
 };

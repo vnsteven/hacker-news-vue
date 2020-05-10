@@ -9,14 +9,26 @@
       :allow-prev="allowPrev"
       :allow-next="allowNext"
     />
-    <Loader :loading="isLoading">
-      <div
-        v-for="story in stories"
-        :key="story.id"
-      >
-        <StoryItem :story="story" />
-      </div>
-    </Loader>
+       <div v-if="isEmpty">
+        <Loader :loading="isCurrentLoading">
+         <div
+           v-for="story in stories"
+           :key="story.id"
+         >
+           <StoryItem :story="story" />
+         </div>
+        </Loader>
+       </div>
+       <div v-else>
+        <Loader :loading="isAllLoading">
+         <div
+           v-for="story in searchResults(path)"
+           :key="story.id"
+         >
+           <StoryItem :story="story" />
+         </div>
+        </Loader>
+       </div>
   </div>
 </template>
 
@@ -58,8 +70,8 @@ export default {
   },
 
   computed: {
-    ...mapState(['stories', 'isLoading']),
-    ...mapGetters({ pageCount: 'getPageCount' })
+    ...mapState(['stories', 'allStories', 'isCurrentLoading', 'isAllLoading', 'isEmpty']),
+    ...mapGetters({ pageCount: 'getPageCount', searchResults: 'getSearchResult' })
   },
 
   methods: {

@@ -4,13 +4,15 @@
       <SearchIcon />
     </div>
     <input
-      :value="value"
+      v-model.lazy="searchValue"
+      @input="updateValue"
       placeholder="Rechercher"
     >
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { SearchIcon } from 'components/UI';
 
 export default {
@@ -18,7 +20,14 @@ export default {
   components: {
     SearchIcon
   },
-  props: ['value']
+  computed: {
+    ...mapState(['searchValue'])
+  },
+  methods: {
+    updateValue(e) {
+      this.$store.commit('UPDATE_SEARCH_VALUE', { value: e.target.value });
+    }
+  }
 };
 </script>
 

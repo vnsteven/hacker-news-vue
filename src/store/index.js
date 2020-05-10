@@ -6,16 +6,31 @@ import getters from './getters';
 
 Vue.use(Vuex);
 
+const currentStories = {
+  stories: [],
+  isCurrentLoading: false
+};
+
+const allStories = {
+  allStories: {
+    top: [],
+    new: [],
+    best: []
+  },
+  isAllLoading: false,
+  dataLength: 0
+};
+
+const searchStories = {
+  searchValue: '',
+  isEmpty: true
+};
+
 const store = new Vuex.Store({
   state: {
-    stories: [],
-    allStories: {
-      top: [],
-      new: [],
-      best: []
-    },
-    dataLength: 0,
-    isLoading: false
+    ...currentStories,
+    ...allStories,
+    ...searchStories
   },
   actions,
   mutations,

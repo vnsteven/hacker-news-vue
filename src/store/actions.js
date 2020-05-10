@@ -4,11 +4,11 @@ const api = new Api();
 
 export default {
   FETCH_DATA: async ({ commit, dispatch }, { path, page }) => {
-    commit('SET_LOADING');
+    commit('SET_CURRENT_LOADING');
     const data = await api.fetchData(path, parseInt(page, 10));
     commit('UPDATE_DATA', { data });
     dispatch('FETCH_DATA_LENGTH');
-    commit('RESET_LOADING');
+    commit('RESET_CURRENT_LOADING');
   },
 
   FETCH_DATA_LENGTH: ({ commit }) => {
@@ -17,7 +17,9 @@ export default {
   },
 
   FETCH_ALL: async ({ commit }, { label }) => {
+    commit('SET_ALL_LOADING');
     const data = await api.fetchAll(label);
     commit('UPDATE_ALL', { data, label });
+    commit('RESET_ALL_LOADING');
   }
 };
