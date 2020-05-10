@@ -1,1 +1,1 @@
-# hacker-new-vue
+# hacker-news-vue
