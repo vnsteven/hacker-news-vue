@@ -9,6 +9,11 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     stories: [],
+    allStories: {
+      top: [],
+      new: [],
+      best: []
+    },
     dataLength: 0,
     isLoading: false
   },

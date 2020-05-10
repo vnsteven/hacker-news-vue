@@ -14,5 +14,10 @@ export default {
   FETCH_DATA_LENGTH: ({ commit }) => {
     const length = api.dataLength;
     commit('UPDATE_DATA_LENGTH', { length });
+  },
+
+  FETCH_ALL: async ({ commit }, { label }) => {
+    const data = await api.fetchAll(label);
+    commit('UPDATE_ALL', { data, label });
   }
 };

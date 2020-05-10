@@ -59,12 +59,12 @@ export default {
 
   computed: {
     ...mapState(['stories', 'isLoading']),
-    ...mapGetters({ pageCount: 'getPageCount' })
+    ...mapGetters({ pageCount: 'getPageCount' })
   },
 
   methods: {
     fetchData() {
-      const data = { path: this.path, page: parseInt(this.page, 10) };
+      const data = { path: this.path, page: parseInt(this.page, 10) };
       this.$store.dispatch('FETCH_DATA', data);
 
       this.handleNextVisibility();

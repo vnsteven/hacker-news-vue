@@ -13,5 +13,9 @@ export default {
 
   RESET_LOADING: (state) => {
     state.isLoading = false;
+  },
+
+  UPDATE_ALL: (state, { data, label }) => {
+    state.allStories[label] = data;
   }
 };
