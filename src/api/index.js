@@ -1,5 +1,5 @@
 import axios from 'axios';
-import handlePagination from '../util';
+import { handlePagination } from '../util';
 
 class Api {
   constructor() {

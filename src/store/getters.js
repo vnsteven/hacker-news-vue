@@ -1,3 +1,5 @@
+import { formatPath } from '../util';
+
 export default {
   getPageCount(state) {
     return Math.floor(state.dataLength / 10);
@@ -5,7 +7,7 @@ export default {
 
   getSearchResult: (state) => (path) => {
     const { allStories, searchValue } = state;
-    const label = path.replace(/\//, '');
+    const label = formatPath(path);
 
     return allStories[label].filter(({ title }) => (
       title.toLowerCase().includes(searchValue.toLowerCase())

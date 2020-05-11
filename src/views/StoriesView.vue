@@ -36,6 +36,7 @@
 import { mapState, mapGetters } from 'vuex';
 import { Loader } from 'components/UI';
 import { StoryItem, Pagination } from 'components/stories';
+import { formatPath } from '../util';
 
 export default {
   name: 'Stories',
@@ -62,16 +63,32 @@ export default {
       }
       this.path = to.path;
       this.fetchData();
+
+      const label = formatPath(this.path);
+
+      if (!this.allStories[label].length) {
+        this.$store.dispatch('FETCH_ALL', { label });
+      }
     }
   },
 
   mounted() {
     this.fetchData();
+    this.$store.dispatch('FETCH_ALL', { label: formatPath(this.path) });
   },
 
   computed: {
-    ...mapState(['stories', 'allStories', 'isCurrentLoading', 'isAllLoading', 'isEmpty']),
-    ...mapGetters({ pageCount: 'getPageCount', searchResults: 'getSearchResult' })
+    ...mapState([
+      'stories',
+      'allStories',
+      'isCurrentLoading',
+      'isAllLoading',
+      'isEmpty'
+    ]),
+    ...mapGetters({
+      pageCount: 'getPageCount',
+      searchResults: 'getSearchResult'
+    })
   },
 
   methods: {

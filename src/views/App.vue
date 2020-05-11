@@ -12,11 +12,6 @@ export default {
   name: 'App',
   components: {
     Header
-  },
-  mounted() {
-    this.$store.dispatch('FETCH_ALL', { label: 'top' });
-    this.$store.dispatch('FETCH_ALL', { label: 'new' });
-    this.$store.dispatch('FETCH_ALL', { label: 'best' });
   }
 };
 </script>
