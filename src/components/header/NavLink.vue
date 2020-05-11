@@ -1,6 +1,6 @@
 <template>
   <div :class="['nav-link', isActive]">
-    <router-link :to="handleRouter">
+    <router-link :to="handleRouter" replace>
       {{ capitalizedLabel }}
     </router-link>
   </div>
@@ -19,7 +19,7 @@ export default {
       return 'nav-link-active';
     },
     handleRouter() {
-      return { path: this.label, query: { page: 1 } };
+      return { path: `/${this.label}`, query: { page: 1 } };
     }
   }
 };

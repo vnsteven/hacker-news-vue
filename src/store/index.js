@@ -8,7 +8,8 @@ Vue.use(Vuex);
 
 const currentStories = {
   stories: [],
-  isCurrentLoading: false
+  isCurrentLoading: false,
+  dataLength: 0
 };
 
 const allStories = {
@@ -17,8 +18,11 @@ const allStories = {
     new: [],
     best: []
   },
-  isAllLoading: false,
-  dataLength: 0
+  isAllLoading: false
+};
+
+const storyComments = {
+  comments: []
 };
 
 const searchStories = {
@@ -30,6 +34,7 @@ const store = new Vuex.Store({
   state: {
     ...currentStories,
     ...allStories,
+    ...storyComments,
     ...searchStories
   },
   actions,

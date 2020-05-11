@@ -7,6 +7,7 @@
       <a
         :href="story.url"
         target="_blank"
+        rel="noopener"
         class="title"
       >
         {{ story.title }}
@@ -14,7 +15,9 @@
       <p class="subtitle">
         by <span>{{ story.by }}</span>
         {{ convertTimestamp }} ago |
-        <span>{{ commentsNumber }}</span>
+        <router-link tag="span" :to="'/item/' + story.id">
+          {{ commentsNumber }}
+        </router-link>
       </p>
     </div>
   </div>
@@ -71,6 +74,7 @@ export default {
 
       span {
         text-decoration: underline;
+        cursor: pointer;
       }
     }
   }

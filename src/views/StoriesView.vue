@@ -39,7 +39,7 @@ import { StoryItem, Pagination } from 'components/stories';
 import { formatPath } from '../util';
 
 export default {
-  name: 'Stories',
+  name: 'StoriesView',
 
   components: {
     StoryItem,

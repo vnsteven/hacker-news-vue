@@ -30,5 +30,9 @@ export default {
   UPDATE_SEARCH_VALUE: (state, { value }) => {
     state.searchValue = value;
     state.isEmpty = !state.searchValue.length;
+  },
+
+  UPDATE_STORY_COMMENTS: (state, { data }) => {
+    state.comments = data;
   }
 };

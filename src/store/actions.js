@@ -21,5 +21,10 @@ export default {
     const data = await api.fetchAll(label);
     commit('UPDATE_ALL', { data, label });
     commit('RESET_ALL_LOADING');
+  },
+
+  FETCH_COMMENTS: async ({ commit }, { story }) => {
+    const data = await api.fetchComments(story);
+    commit('UPDATE_STORY_COMMENTS', { data });
   }
 };

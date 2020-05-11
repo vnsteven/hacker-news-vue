@@ -44,6 +44,16 @@ class Api {
       return console.error(error.message);
     }
   };
+
+  fetchComments = async (story) => (
+    Promise.all(story.kids.map(async (id) => {
+      const res = await this.instance.get(`/item/${id}.json`);
+      const item = await Promise.resolve(res);
+      if (!item.data.kids) return item.data;
+
+      return this.fetchComments(item.data);
+    }))
+  );
 }
 
 export default Api;
