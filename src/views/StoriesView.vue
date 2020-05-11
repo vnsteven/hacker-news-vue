@@ -63,18 +63,13 @@ export default {
       }
       this.path = to.path;
       this.fetchData();
-
-      const label = formatPath(this.path);
-
-      if (!this.allStories[label].length) {
-        this.$store.dispatch('FETCH_ALL', { label });
-      }
+      this.fetchAll();
     }
   },
 
   mounted() {
     this.fetchData();
-    this.$store.dispatch('FETCH_ALL', { label: formatPath(this.path) });
+    this.fetchAll();
   },
 
   computed: {
@@ -92,6 +87,14 @@ export default {
   },
 
   methods: {
+    fetchAll() {
+      const label = formatPath(this.path);
+
+      if (!this.allStories[label].length) {
+        this.$store.dispatch('FETCH_ALL', { label });
+      }
+    },
+
     fetchData() {
       const data = { path: this.path, page: parseInt(this.page, 10) };
       this.$store.dispatch('FETCH_DATA', data);
