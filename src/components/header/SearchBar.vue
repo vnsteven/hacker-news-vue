@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { SearchIcon } from 'components/UI';
+import SearchIcon from '../UI/SearchIcon';
 
 export default {
   name: 'SearchBar',

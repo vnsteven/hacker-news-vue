@@ -34,8 +34,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { Loader } from 'components/UI';
-import { StoryItem, Pagination } from 'components/stories';
+import { StoryItem, Pagination, Loader } from 'components';
 import { formatPath } from '../util';
 
 export default {
