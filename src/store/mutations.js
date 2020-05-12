@@ -33,6 +33,6 @@ export default {
   },
 
   UPDATE_STORY_COMMENTS: (state, { data }) => {
-    state.comments = data;
+    state.comments = data.kids;
   }
 };

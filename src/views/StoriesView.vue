@@ -13,7 +13,7 @@
         <Loader :loading="isCurrentLoading">
          <div
            v-for="story in stories"
-           :key="story.id"
+           :key="story ? story.id : null"
          >
            <StoryItem :story="story" />
          </div>
@@ -23,7 +23,7 @@
         <Loader :loading="isAllLoading">
          <div
            v-for="story in searchResults(path)"
-           :key="story.id"
+           :key="story ? story.id : null"
          >
            <StoryItem :story="story" />
          </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item">
+  <div v-if="story" class="list-item">
     <div class="left">
       <span>{{ story.score }}</span>
     </div>

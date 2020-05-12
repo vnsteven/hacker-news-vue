@@ -6,3 +6,5 @@ export { default as Pagination } from './stories/Pagination.vue';
 
 export { default as Loader } from './UI/Loader.vue';
 export { default as SearchIcon } from './UI/SearchIcon.vue';
+
+export { default as CommentItem } from './comments/CommentItem.vue';
