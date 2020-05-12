@@ -48,17 +48,21 @@ class Api {
   };
 
   fetchComments = async (story) => {
-    const mapComments = await Promise.all(story.kids.map(async (id) => {
-      const res = await this.getStoryItem(id);
-      const item = await Promise.resolve(res);
-      if (!item.data || !item.data.kids) return item.data;
+    try {
+      const mapComments = await Promise.all(story.kids.map(async (id) => {
+        const res = await this.getStoryItem(id);
+        const item = await Promise.resolve(res);
+        if (!item.data || !item.data.kids) return item.data;
 
-      return this.fetchComments(item.data);
-    }));
-    return {
-      ...story,
-      kids: mapComments
-    };
+        return this.fetchComments(item.data);
+      }));
+      return {
+        ...story,
+        kids: mapComments
+      };
+    } catch (error) {
+      return console.error(error.message);
+    }
   };
 }
 
