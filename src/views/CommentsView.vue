@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="stories">
+  <div class="container" v-if="story">
     <div class="header">
       <a
         :href="story.url"
@@ -7,7 +7,7 @@
         rel="noopener"
         class="title"
       >
-        <h1>{{ story.title }}</h1>
+        <h1>{{ story.title }}</h1>
       </a>
       <p class="subtitle">
         <span class="by">{{ story.by }}</span>
@@ -15,24 +15,27 @@
         <span>{{ comments.length }} commentaires</span>
       </p>
     </div>
-    <div class="comments">
-      <div :key="comment ? comment.id : null" v-for="comment in comments">
-        <CommentItem :comment="comment" />
+      <div class="comments">
+        <Loader :loading="isCommentLoading">
+          <div :key="comment ? comment.id : null" v-for="comment in comments">
+            <CommentItem :comment="comment" />
+          </div>
+        </Loader>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { CommentItem } from 'components';
+import { CommentItem, Loader } from 'components';
 import Api from '../api';
 
 export default {
   name: 'CommentsView',
 
   components: {
-    CommentItem
+    CommentItem,
+    Loader
   },
 
   data() {
@@ -42,7 +45,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['stories', 'comments']),
+    ...mapState(['stories', 'comments', 'isCommentLoading']),
     convertTimestamp() {
       return this.$moment(new Date(this.story.time * 1000)).fromNow();
     }

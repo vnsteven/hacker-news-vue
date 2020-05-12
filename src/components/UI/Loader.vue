@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="loader">
     <div v-if="loading">
       <BeatLoader color="var(--primary)" />
     </div>
@@ -24,7 +24,5 @@ export default {
 .loader {
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
-  width: 100%;
 }
 </style>

@@ -34,5 +34,13 @@ export default {
 
   UPDATE_STORY_COMMENTS: (state, { data }) => {
     state.comments = data.kids;
+  },
+
+  SET_COMMENT_LOADING: (state) => {
+    state.isCommentLoading = true;
+  },
+
+  RESET_COMMENT_LOADING: (state) => {
+    state.isCommentLoading = false;
   }
 };

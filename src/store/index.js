@@ -22,7 +22,8 @@ const allStories = {
 };
 
 const storyComments = {
-  comments: []
+  comments: [],
+  isCommentLoading: false
 };
 
 const searchStories = {

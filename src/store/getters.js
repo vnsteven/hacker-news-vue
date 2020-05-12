@@ -9,8 +9,9 @@ export default {
     const { allStories, searchValue } = state;
     const label = formatPath(path);
 
-    return allStories[label].filter(({ title }) => (
-      title.toLowerCase().includes(searchValue.toLowerCase())
-    ));
+    return allStories[label].filter((story) => {
+      if (!story) return null;
+      return story.title.toLowerCase().includes(searchValue.toLowerCase());
+    });
   }
 };

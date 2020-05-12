@@ -38,7 +38,7 @@ export default {
   }
 
   a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--white);
   }
 

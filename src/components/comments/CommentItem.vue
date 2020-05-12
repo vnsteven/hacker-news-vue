@@ -3,7 +3,7 @@
     <div class="comment">
       <div class="info">
         <p class="by">{{ comment.by }}</p>
-        <p>{{ convertTimestamp }}</p>
+        <p>{{ convertTimestamp }}</p>
       </div>
       <div v-html="comment.text" />
     </div>
@@ -33,13 +33,10 @@ export default {
   data() {
     return {
       isVisible: true
-    }
+    };
   },
 
   computed: {
-    isArray() {
-      return Array.isArray(this.comment);
-    },
     convertTimestamp() {
       return this.$moment(new Date(this.comment.time * 1000)).fromNow();
     },
@@ -54,14 +51,14 @@ export default {
       this.isVisible = !this.isVisible;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .item-container {
   line-height: 1.5;
   letter-spacing: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 
   .comment {
     padding: 1rem 0;
@@ -90,7 +87,7 @@ export default {
 
     .comments-length {
       color: var(--dark-grey);
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
 
     .sign {

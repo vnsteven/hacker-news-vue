@@ -24,7 +24,9 @@ export default {
   },
 
   FETCH_COMMENTS: async ({ commit }, { story }) => {
+    commit('SET_COMMENT_LOADING');
     const data = await api.fetchComments(story);
     commit('UPDATE_STORY_COMMENTS', { data });
+    commit('RESET_COMMENT_LOADING');
   }
 };
