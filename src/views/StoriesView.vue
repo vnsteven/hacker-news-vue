@@ -8,27 +8,22 @@
       :next="next"
       :allow-prev="allowPrev"
       :allow-next="allowNext"
+      :is-empty="isEmpty"
     />
-       <div v-if="isEmpty">
-        <Loader :loading="isCurrentLoading">
-         <div
-           v-for="story in stories"
-           :key="story ? story.id : null"
-         >
-           <StoryItem :story="story" />
-         </div>
-        </Loader>
-       </div>
-       <div v-else>
-        <Loader :loading="isAllLoading">
-         <div
-           v-for="story in searchResults(path)"
-           :key="story ? story.id : null"
-         >
-           <StoryItem :story="story" />
-         </div>
-        </Loader>
-       </div>
+    <div v-if="isEmpty">
+      <Loader :loading="isCurrentLoading" :transition="'slide-fade'">
+        <div v-for="story in stories" :key="story ? story.id : null">
+          <StoryItem :story="story" />
+        </div>
+      </Loader>
+    </div>
+    <div v-else>
+      <Loader :loading="isAllLoading">
+        <div v-for="story in searchResults(path)" :key="story ? story.id : null">
+          <StoryItem v-show="story" :story="story" />
+        </div>
+      </Loader>
+    </div>
   </div>
 </template>
 

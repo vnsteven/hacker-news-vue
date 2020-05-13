@@ -108,6 +108,7 @@ export default {
 
   .item-kids {
     padding-left: 1rem;
+    height: 100%;
   }
 }
 </style>
