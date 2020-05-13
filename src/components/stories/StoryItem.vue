@@ -75,6 +75,10 @@ export default {
       span {
         text-decoration: underline;
         cursor: pointer;
+
+        &:hover {
+          color: var(--primary);
+        }
       }
     }
   }

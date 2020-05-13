@@ -74,6 +74,10 @@ export default {
         cursor: pointer;
         text-decoration: underline;
         margin-right: 0.5rem;
+
+        &:hover {
+          color: var(--primary);
+        }
       }
     }
   }

@@ -81,6 +81,10 @@ export default {
       .by {
         cursor: pointer;
         text-decoration: underline;
+
+        &:hover {
+          color: var(--primary);
+        }
       }
     }
   }
