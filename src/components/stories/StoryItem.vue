@@ -48,7 +48,7 @@ export default {
   background-color: var(--white);
   box-sizing: border-box;
 
-  @media screen and (max-width: 740px) {
+  @media screen and (max-width: var(--phone)) {
     width: 95vw;
   }
 

@@ -30,6 +30,8 @@ export default {
   --dark-grey: #6d6875;
   --black: #34495E;
   --brown: #EABE7C;
+
+  --phone: 740px;
 }
 
 body {

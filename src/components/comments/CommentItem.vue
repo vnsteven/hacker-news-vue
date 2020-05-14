@@ -59,6 +59,7 @@ export default {
   line-height: 1.5;
   letter-spacing: 0;
   font-size: 0.9rem;
+  width: 100%;
 
   .comment {
     padding: 1rem 0;

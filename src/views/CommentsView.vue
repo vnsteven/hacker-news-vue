@@ -69,6 +69,7 @@ export default {
   padding-top: 5rem;
   padding-bottom: 1rem;
   min-height: 10rem;
+  width: 100%;
 
   .header {
     width: 45rem;
@@ -76,8 +77,11 @@ export default {
     margin-bottom: 1rem;
     background-color: var(--white);
 
-    .subtitle {
+    @media screen and (max-width: var(--phone)) {
+      width: 95vw;
+    }
 
+    .subtitle {
       .by {
         cursor: pointer;
         text-decoration: underline;
@@ -94,7 +98,7 @@ export default {
     padding: 2rem 3rem;
     background-color: var(--white);
 
-    @media screen and (max-width: 740px) {
+    @media screen and (max-width: var(--phone)) {
       width: 95vw;
     }
   }

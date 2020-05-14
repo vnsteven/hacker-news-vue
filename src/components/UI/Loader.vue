@@ -4,7 +4,7 @@
       <BeatLoader color="var(--primary)" />
     </div>
     <transition :name="transition">
-      <div v-if="!loading">
+      <div v-if="!loading" class="children">
         <slot />
       </div>
     </transition>
@@ -26,6 +26,12 @@ export default {
 .loader {
   display: flex;
   justify-content: center;
+
+  .children {
+    @media screen and (max-width: var(--phone)) {
+      width: 100%;
+    }
+  }
 
   .slide-fade {
     &-enter-active {
