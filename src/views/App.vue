@@ -31,7 +31,8 @@ export default {
   --black: #34495E;
   --brown: #EABE7C;
 
-  --phone: 740px;
+  --width: 45rem;
+  --bold: 800;
 }
 
 body {

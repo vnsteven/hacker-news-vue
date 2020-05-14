@@ -13,7 +13,7 @@
         {{ story.title }}
       </a>
       <p class="subtitle">
-        by <span>{{ story.by }}</span>
+        by <router-link tag="span" :to="'/user/' + story.by">{{ story.by }}</router-link>
         {{ convertTimestamp }} ago |
         <router-link tag="span" :to="'/item/' + story.id">
           {{ commentsNumber }}
@@ -33,7 +33,7 @@ export default {
       return '0 comment';
     },
     convertTimestamp() {
-      return this.$moment(new Date(this.story.time * 1000)).fromNow();
+      return this.$moment(this.story.time * 1000).fromNow();
     }
   }
 };
@@ -42,13 +42,13 @@ export default {
 <style lang="scss" scoped>
 .list-item {
   display: flex;
-  width: 45rem;
+  width: var(--width);
   height: 5rem;
   border-bottom: 1px solid var(--grey);
   background-color: var(--white);
   box-sizing: border-box;
 
-  @media screen and (max-width: var(--phone)) {
+  @media screen and (max-width: 740px) {
     width: 95vw;
   }
 
@@ -58,7 +58,7 @@ export default {
     justify-content: center;
     align-items: center;
     color: var(--primary);
-    font-weight: 800;
+    font-weight: var(--bold);
     font-size: 1.2rem;
   }
 

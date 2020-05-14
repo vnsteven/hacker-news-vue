@@ -38,7 +38,7 @@ export default {
 
   computed: {
     convertTimestamp() {
-      return this.$moment(new Date(this.comment.time * 1000)).fromNow();
+      return this.$moment(this.comment.time * 1000).fromNow();
     },
     displaySign() {
       if (this.isVisible) return '-';

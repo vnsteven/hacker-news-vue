@@ -47,7 +47,7 @@ export default {
   computed: {
     ...mapState(['stories', 'comments', 'isCommentLoading']),
     convertTimestamp() {
-      return this.$moment(new Date(this.story.time * 1000)).fromNow();
+      return this.$moment(this.story.time * 1000).fromNow();
     }
   },
 
@@ -72,12 +72,12 @@ export default {
   width: 100%;
 
   .header {
-    width: 45rem;
+    width: var(--width);
     padding: 1rem 3rem;
     margin-bottom: 1rem;
     background-color: var(--white);
 
-    @media screen and (max-width: var(--phone)) {
+    @media screen and (max-width: 740px) {
       width: 95vw;
     }
 
@@ -94,11 +94,11 @@ export default {
   }
 
   .comments {
-    width: 45rem;
+    width: var(--width);
     padding: 2rem 3rem;
     background-color: var(--white);
 
-    @media screen and (max-width: var(--phone)) {
+    @media screen and (max-width: 740px) {
       width: 95vw;
     }
   }

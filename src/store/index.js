@@ -31,12 +31,19 @@ const searchStories = {
   isEmpty: true
 };
 
+const user = {
+  user: null,
+  userStories: [],
+  isUserLoading: false
+};
+
 const store = new Vuex.Store({
   state: {
     ...currentStories,
     ...allStories,
     ...storyComments,
-    ...searchStories
+    ...searchStories,
+    ...user
   },
   actions,
   mutations,

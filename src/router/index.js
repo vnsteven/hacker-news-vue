@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Stories from 'views/StoriesView';
-import Comments from 'views/CommentsView';
+
+const Stories = () => import('views/StoriesView');
+const Comments = () => import('views/CommentsView');
+const User = () => import('views/UserView');
 
 Vue.use(VueRouter);
 
@@ -12,6 +14,7 @@ export default new VueRouter({
     { path: '/new', component: Stories },
     { path: '/best', component: Stories },
     { path: '/item/:id', component: Comments },
+    { path: '/user/:id', component: User },
     { path: '/', redirect: '/top' }
   ]
 });

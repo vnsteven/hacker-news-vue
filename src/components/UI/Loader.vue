@@ -28,7 +28,7 @@ export default {
   justify-content: center;
 
   .children {
-    @media screen and (max-width: var(--phone)) {
+    @media screen and (max-width: 740px) {
       width: 100%;
     }
   }

@@ -39,7 +39,7 @@ export default {
 
   .nav-bar {
     display: flex;
-    width: 45rem;
+    width: var(--width);
     height: inherit;
 
     .navigation {

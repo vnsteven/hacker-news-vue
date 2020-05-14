@@ -28,5 +28,13 @@ export default {
     const data = await api.fetchComments(story);
     commit('UPDATE_STORY_COMMENTS', { data });
     commit('RESET_COMMENT_LOADING');
+  },
+
+  FETCH_USER: async ({ commit }, { id }) => {
+    commit('SET_USER_LOADING');
+    const responseUser = await api.getUserItem(id);
+    const responseStories = await api.getStories(responseUser.data.submitted.slice(0, 10));
+    commit('UPDATE_USER', { user: responseUser.data, stories: responseStories });
+    commit('RESET_USER_LOADING');
   }
 };

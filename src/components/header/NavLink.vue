@@ -44,7 +44,7 @@ export default {
 
   .router-link-active {
     pointer-events: none;
-    font-weight: 800;
+    font-weight: var(--bold);
   }
 }
 </style>

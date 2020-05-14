@@ -10,15 +10,17 @@ class Api {
     this.dataLength = 0;
   }
 
+  getUserItem = (id) => this.instance.get(`/user/${id}.json`);
+
   getStoriesIds = (label) => this.instance.get(`${label}stories.json`);
 
   getStoryItem = (id) => this.instance.get(`/item/${id}.json`);
 
-  getStoryPromises = (data) => (
-    data.map(async (id) => {
+  getStories = (data) => (
+    Promise.all(data.map(async (id) => {
       const res = await this.getStoryItem(id);
       return res.data;
-    })
+    }))
   );
 
   fetchData = async (label, page) => {
@@ -26,9 +28,7 @@ class Api {
       const { from, to } = handlePagination(page);
       const { data } = await this.getStoriesIds(label);
       this.dataLength = data.length;
-      const result = await Promise.all(
-        this.getStoryPromises(data.slice(from, to))
-      );
+      const result = await this.getStories(data.slice(from, to));
       return result;
     } catch (error) {
       return console.error(error.message);
@@ -38,9 +38,7 @@ class Api {
   fetchAll = async (label) => {
     try {
       const { data } = await this.getStoriesIds(label);
-      const result = await Promise.all(
-        this.getStoryPromises(data)
-      );
+      const result = await this.getStories(data);
       return result;
     } catch (error) {
       return console.error(error.message);
