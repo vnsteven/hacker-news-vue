@@ -29,7 +29,7 @@ export default {
 
   .children {
     @media screen and (max-width: 740px) {
-      width: 100%;
+      width: 95vw;
     }
   }
 

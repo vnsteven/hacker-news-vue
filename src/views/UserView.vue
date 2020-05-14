@@ -1,13 +1,13 @@
 <template>
-  <div v-if="user" class="container">
+  <div class="container">
     <Loader :loading="isUserLoading">
-      <div class="header">
+      <div class="header" v-if="user">
         <div class="header-left">
           <div class="info">
             <h1>{{ user.id }}</h1>
-            <p>joined {{ convertTimestamp }}</p>
+            <p>joined {{ convertTimestamp }}</p>
           </div>
-          <div class="text" v-html="user.about" />
+          <div class="text" v-html="fitText" />
         </div>
         <div class="header-right">
           <p class="karma">{{ user.karma }}</p>
@@ -24,7 +24,6 @@
 <script>
 import { mapState } from 'vuex';
 import { StoryItem, Loader } from 'components';
-import Api from 'api';
 
 export default {
   name: 'UserView',
@@ -38,6 +37,15 @@ export default {
     ...mapState(['user', 'userStories', 'isUserLoading']),
     convertTimestamp() {
       return this.$moment(this.user.created * 1000).fromNow();
+    },
+    fitText() {
+      let ellipsis = '';
+      const limit = 40 * 6;
+      const { about } = this.user;
+
+      if (!about) return null;
+      if (about.length >= limit) ellipsis = '...';
+      return about.substr(0, 40 * 6) + ellipsis;
     }
   },
 
@@ -84,6 +92,14 @@ export default {
 
       .text {
         font-size: 0.8rem;
+
+        p {
+          line-break: auto;
+        }
+      }
+
+      @media screen and (max-width: 740px) {
+        width: 95vw;
       }
     }
 
@@ -94,6 +110,10 @@ export default {
         font-size: 1.5rem;
         color: var(--primary);
         font-weight: var(--bold);
+      }
+
+      @media screen and (max-width: 740px) {
+        flex: 0.5;
       }
     }
   }

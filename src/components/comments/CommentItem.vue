@@ -2,7 +2,9 @@
   <div v-if="comment" class="item-container">
     <div class="comment">
       <div class="info">
-        <p class="by">{{ comment.by }}</p>
+        <router-link tag="p" class="by" :to="'/user/' + comment.by">
+          {{ comment.by }}
+        </router-link>
         <p>{{ convertTimestamp }}</p>
       </div>
       <div v-html="comment.text" />
